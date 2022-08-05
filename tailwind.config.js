@@ -14,10 +14,10 @@ module.exports = {
         default: '#FFF',
         highlight: '#FF0079',
         'light-gray': '#F8F8F8',
+        'dark-gray': '#BABBC3',
         dark: '#494C62'
       }
     }
   },
-  plugins: [],
+  plugins: []
 };
-

@@ -15,7 +15,7 @@ const Button: FC<ButtonProps> = ({
   children,
   variant = ButtonVariants.default,
   isDisabled = false,
-  onClick,
+  onClick
 }) => (
   <button
     disabled={isDisabled}
@@ -25,7 +25,7 @@ const Button: FC<ButtonProps> = ({
         variant === ButtonVariants.default
           ? ' bg-highlight'
           : ' border-2 border-default'
-      }`,
+      }`
     ].join('')}
     onClick={onClick}
   >
