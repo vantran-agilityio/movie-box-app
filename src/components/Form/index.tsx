@@ -17,10 +17,11 @@ import { validateAccount } from '@helpers/validate';
 import { Account } from '@models/Account';
 
 interface FormProps {
+  className?: string;
   onSubmit: (account: Account) => void;
 }
 
-const Form: FC<FormProps> = ({ onSubmit }) => {
+const Form: FC<FormProps> = ({ className, onSubmit }) => {
   const [isSubmit, setIsSubmit] = useState(false);
   const [account, setAccount] = useState<Account>({
     username: '',
@@ -55,7 +56,7 @@ const Form: FC<FormProps> = ({ onSubmit }) => {
   }, []);
   return (
     <form
-      className="text-center"
+      className={['text-center', className].join('')}
       onSubmit={(event: FormEvent<HTMLFormElement>) => handleSubmit(event)}
     >
       <fieldset>

@@ -1,7 +1,11 @@
 // Libraries
-import { TextFieldTypes } from '@common-types/textfield';
-import Text from '@components/Text';
 import { ChangeEvent, forwardRef, memo, useCallback, useState } from 'react';
+
+// Types
+import { TextFieldTypes } from '@common-types/textfield';
+
+// Components
+import Text from '@components/Text';
 
 interface TextFieldProps {
   className?: string;
