@@ -29,6 +29,7 @@
       "@layouts/*": ["./layouts/*"],
       "@services/*": ["./services/*"],
       "@models/*": ["./models/*"],
+      "@common-types/*": ["./common-types/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
