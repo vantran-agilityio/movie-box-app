@@ -5,6 +5,7 @@
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "curly": ["error", "all"],
     "quotes": ["error", "single"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "react-hooks/exhaustive-deps": "warn"
   }
 }

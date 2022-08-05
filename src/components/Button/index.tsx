@@ -6,6 +6,7 @@ import { ButtonVariants } from '@common-types/button';
 
 interface ButtonProps {
   children: ReactNode;
+  className?: string;
   variant?: ButtonVariants;
   isDisabled?: boolean;
   onClick: () => void;
@@ -13,6 +14,7 @@ interface ButtonProps {
 
 const Button: FC<ButtonProps> = ({
   children,
+  className,
   variant = ButtonVariants.default,
   isDisabled = false,
   onClick
@@ -25,7 +27,8 @@ const Button: FC<ButtonProps> = ({
         variant === ButtonVariants.default
           ? ' bg-highlight'
           : ' border-2 border-default'
-      }`
+      }`,
+      className && className
     ].join('')}
     onClick={onClick}
   >
