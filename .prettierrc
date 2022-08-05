@@ -1,0 +1,16 @@
+{
+  "semi": true,
+  "endOfLine": "crlf",
+  "printWidth": 80,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": ["**/*.css", "**/*.html", "**/*.json"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}
