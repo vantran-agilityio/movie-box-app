@@ -1,5 +1,5 @@
 // Libraries
-import { FC, ReactNode } from 'react';
+import { FC, memo, ReactNode } from 'react';
 
 // Types
 import { ButtonVariants } from '@common-types/button';
@@ -33,4 +33,4 @@ const Button: FC<ButtonProps> = ({
   </button>
 );
 
-export default Button;
+export default memo(Button);
