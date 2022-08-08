@@ -1,12 +1,9 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
 
+const theme = require('./src/themes');
+
+module.exports = {
+  purge: ['./src/**/*.{js,ts,jsx,tsx}', '../sharing/src/**/*.{js,ts,jsx,tsx}'],
+  theme,
+  plugins: []
+};

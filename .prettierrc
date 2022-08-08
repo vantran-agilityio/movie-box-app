@@ -3,7 +3,7 @@
   "endOfLine": "crlf",
   "printWidth": 80,
   "tabWidth": 2,
-  "trailingComma": "es5",
+  "trailingComma": "none",
   "singleQuote": true,
   "overrides": [
     {
