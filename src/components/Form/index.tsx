@@ -44,9 +44,9 @@ const Form: FC<FormProps> = ({ className, onSubmit }) => {
     event.preventDefault();
 
     const username = usernameRef.current?.value || '';
-    const pwd = pwdRef.current?.value || '';
+    const password = pwdRef.current?.value || '';
 
-    const currentAccount: Account = { username, password: pwd };
+    const currentAccount: Account = { username, password };
 
     // validate form
     setFormErrors(validateAccount(currentAccount));
@@ -56,7 +56,7 @@ const Form: FC<FormProps> = ({ className, onSubmit }) => {
   }, []);
   return (
     <form
-      className={['text-center', className].join('')}
+      className={`text-center${className && ` ${className}`}`}
       onSubmit={(event: FormEvent<HTMLFormElement>) => handleSubmit(event)}
     >
       <fieldset>
@@ -79,9 +79,7 @@ const Form: FC<FormProps> = ({ className, onSubmit }) => {
           ref={pwdRef}
         />
       </fieldset>
-      <Button className=" my-0 mx-auto" onClick={() => null}>
-        Sign in
-      </Button>
+      <Button className="my-0 mx-auto">Sign in</Button>
     </form>
   );
 };

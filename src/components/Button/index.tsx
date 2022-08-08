@@ -9,7 +9,7 @@ interface ButtonProps {
   className?: string;
   variant?: ButtonVariants;
   isDisabled?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -17,19 +17,16 @@ const Button: FC<ButtonProps> = ({
   className,
   variant = ButtonVariants.default,
   isDisabled = false,
-  onClick
+  onClick = () => null
 }) => (
   <button
     disabled={isDisabled}
-    className={[
-      'px-5 py-1 leading-8 text-default rounded uppercase',
-      `${
+    className={`px-5 py-1 leading-8 text-white-100 rounded uppercase 
+      ${
         variant === ButtonVariants.default
-          ? ' bg-highlight'
-          : ' border-2 border-default'
-      }`,
-      className && className
-    ].join('')}
+          ? ' bg-red-100'
+          : ' border-2 border-white-100'
+      }${className && ` ${className}`}`}
     onClick={onClick}
   >
     {children}

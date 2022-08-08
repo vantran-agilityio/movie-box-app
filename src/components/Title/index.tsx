@@ -11,23 +11,11 @@ interface TitleProps {
 }
 
 const Title: FC<TitleProps> = ({
-  className,
+  className = '',
   content,
   variant = TitleVariants.default
 }) => (
-  <div
-    className={[
-      'text-default',
-      `${
-        variant === TitleVariants.subtitle
-          ? ' text-sm text-dark-gray'
-          : ' text-base text-dark'
-      }`,
-      className
-    ].join('')}
-  >
-    {content}
-  </div>
+  <div className={`${variant}${className && ` ${className}`}`}>{content}</div>
 );
 
 export default Title;

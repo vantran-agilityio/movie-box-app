@@ -2,10 +2,18 @@
   "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
   "rules": {
     "eqeqeq": "error",
-    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "indent": ["error", 2, { "ignoredNodes": ["TemplateLiteral > *"] }],
     "curly": ["error", "all"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "react-hooks/exhaustive-deps": "warn"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": 0
+      }
+    }
+  ]
 }

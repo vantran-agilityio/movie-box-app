@@ -20,7 +20,7 @@ interface TextFieldProps {
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
     {
-      className,
+      className = '',
       label,
       placeholder,
       name,
@@ -47,7 +47,9 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         <input
           id={name}
           name={name}
-          className={['indent-2 px-2 py-3 text-sm rounded', className].join('')}
+          className={`indent-2 px-2 py-3 text-sm rounded${
+            className && ` ${className}`
+          }`}
           type={type}
           placeholder={placeholder}
           value={value}
@@ -56,7 +58,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         />
         <Text
           content={errorMessage}
-          className=" text-sm text-highlight text-start h-4 pt-1"
+          className="text-red-100 text-start h-4 pt-1"
         />
       </div>
     );
