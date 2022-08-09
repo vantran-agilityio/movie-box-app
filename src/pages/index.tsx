@@ -1,29 +1,31 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
 import { useCallback, useEffect, useState } from 'react';
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 // Helpers
 import { getCurrentUser } from '@helpers/localStore';
+import { sortMoviesByTabOption } from '@helpers/sort';
 
 // Models
 import { Account } from '@models/Account';
+import { Movie } from '@models/Movie';
 
 // Components
-import SEO from '@components/SEO';
 import Banner from '@components/Banner';
-import RatingBox from '@components/RatingBox';
-import SearchBox from '@components/SearchBox';
-import Card from '@components/Card';
-import { Genres } from '@common-types/movieGenreTypes';
+import SEO from '@components/SEO';
 import Tabs from '@components/Tabs';
 import MovieList from '@components/MovieList';
-import { Movie } from '@models/Movie';
+
+// Services
 import { getMovies } from '@services/movie.service';
+
+// Constants
 import { ERROR_MESSAGES } from '@constants/messages';
+
+// Types
 import { TabOption, TAB_OPTION_LIST } from '@common-types/tabs';
-import { sortMoviesByTabOption } from '@helpers/sort';
 
 interface HomeProps {
   movieList: Movie[];
@@ -74,10 +76,9 @@ const Home: NextPage<HomeProps> = ({ movieList = [] }) => {
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   try {
     const response: Movie[] = await getMovies();
-    console.log(response);
 
     if (!response) {
       throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
@@ -93,6 +94,6 @@ export async function getStaticProps() {
 
     return { props: {} };
   }
-}
+};
 
 export default Home;

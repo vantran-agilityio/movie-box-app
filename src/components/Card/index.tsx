@@ -1,5 +1,5 @@
 // Libraries
-import { FC, memo } from 'react';
+import { FC, memo, useCallback } from 'react';
 import Image from 'next/future/image';
 
 // Components
@@ -13,23 +13,28 @@ import { Movie } from '@models/Movie';
 
 // Types
 import { TitleVariants } from '@common-types/title';
+import { useRouter } from 'next/router';
 
 interface CardProps {
   className?: string;
   movie: Movie;
-  onClick: () => void;
 }
 const Card: FC<CardProps> = ({
   className = '',
-  movie: { name, genres, image, rating, releaseYear },
-  onClick
+  movie: { id, name, genres, image, rating, releaseYear }
 }) => {
+  const { push } = useRouter();
+
+  const handleClick = useCallback(() => {
+    push(`/detail/${id}`);
+  }, []);
+
   return (
     <div
       className={`inline-block bg-white-100 shadow-2xl cursor-pointer rounded overflow-hidden text-start${
         className && ` ${className}`
       }`}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <div className="relative">
         <Text

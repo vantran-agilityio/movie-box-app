@@ -5,6 +5,7 @@ export interface Movie {
   name: string;
   genres: Genres[];
   image: string;
+  coverImage?: string;
   rating: number;
   releaseYear: number;
 }

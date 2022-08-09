@@ -12,7 +12,8 @@ const nextConfig = {
       'lh5.googleusercontent.com',
       'lh3.googleusercontent.com',
       'lh4.googleusercontent.com',
-      'lh6.googleusercontent.com'
+      'lh6.googleusercontent.com',
+      'drive.google.com'
     ]
   }
 };

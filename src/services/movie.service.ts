@@ -11,4 +11,8 @@ const getMovies = async (): Promise<Movie[]> => {
   return await get(`${MOVIE_URL}?sortBy=id&order=desc`);
 };
 
-export { getMovies };
+const getMovieById = async (id: string): Promise<Movie> => {
+  return await get(`${MOVIE_URL}/${id}`);
+};
+
+export { getMovies, getMovieById };
