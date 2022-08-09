@@ -15,7 +15,7 @@ import { ERROR_MESSAGES } from '@constants/messages';
 import { Account } from '@models/Account';
 
 // Services
-import { getAccounts } from '@services/account';
+import { getAccounts } from '@services/account.service';
 
 // Helpers
 import { setCurrentUser } from '@helpers/index';
@@ -48,8 +48,6 @@ const Login: NextPage<LoginProps> = ({
       );
 
       if (userFound === -1) {
-        console.log(userFound);
-
         throw new Error(ERROR_MESSAGES.NO_ACCOUNT_FOUND);
       }
 

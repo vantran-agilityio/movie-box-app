@@ -8,7 +8,12 @@ const nextConfig = {
     }
   },
   images: {
-    domains: ['lh5.googleusercontent.com']
+    domains: [
+      'lh5.googleusercontent.com',
+      'lh3.googleusercontent.com',
+      'lh4.googleusercontent.com',
+      'lh6.googleusercontent.com'
+    ]
   }
 };
 
