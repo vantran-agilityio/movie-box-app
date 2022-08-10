@@ -1,5 +1,5 @@
 // Libraries
-import { useCallback } from 'react';
+import { lazy, Suspense, useCallback } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Image from 'next/future/image';
@@ -15,10 +15,11 @@ import { ERROR_MESSAGES } from '@constants/messages';
 
 // Types
 import { ParamsProps } from '@common-types/param';
+import LoadingIndicator from '@components/LoadingIndicator';
 
 // Components
-import Info from '@components/Info/index';
-import Play from '@components/Play';
+const Info = lazy(() => import('@components/Info'));
+const Play = lazy(() => import('@components/Play'));
 
 interface DetailProps {
   movie: Movie;
@@ -35,13 +36,13 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
 
   return (
     <div
-      className="pt-32 pl-20 h-screen bg-cover bg-no-repeat"
+      className="pt-32 pl-20 h-screen bg-cover bg-no-repeat bg-center"
       style={{
         backgroundImage: `url('${coverImage}')`
       }}
     >
       <Image
-        className="bg-gray-400 rounded-xl cursor-pointer"
+        className="bg-white-100 rounded-xl cursor-pointer"
         src="/icons/arrow-left-short.svg"
         width="50"
         height="30"
@@ -50,8 +51,10 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
       />
 
       <div className="flex justify-evenly align-middle ">
-        <Info movie={movie} />
-        <Play />
+        <Suspense fallback={<LoadingIndicator />}>
+          <Info movie={movie} />
+          <Play />
+        </Suspense>
       </div>
     </div>
   );

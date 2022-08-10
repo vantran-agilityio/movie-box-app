@@ -61,6 +61,7 @@ const Form: FC<FormProps> = ({ className, onSubmit }) => {
     >
       <fieldset>
         <TextField
+          className="px-2 py-3"
           placeholder="Enter your username..."
           name="username"
           type={TextFieldTypes.text}
@@ -70,6 +71,7 @@ const Form: FC<FormProps> = ({ className, onSubmit }) => {
           ref={usernameRef}
         />
         <TextField
+          className="px-2 py-3"
           placeholder="Enter your password..."
           name="password"
           type={TextFieldTypes.password}

@@ -12,7 +12,7 @@ interface MovieListProps {
 }
 
 const MovieList: FC<MovieListProps> = ({ movies }) => (
-  <div className="text-center py-10">
+  <div className="py-10 px-5">
     {movies.map((movie: Movie) => (
       <Card key={movie.id} className="mx-4 my-2" movie={movie} />
     ))}

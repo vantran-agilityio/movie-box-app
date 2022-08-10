@@ -8,6 +8,6 @@ module.exports = {
     // eslint-disable-next-line quotes
     login: "url('/images/background.jpg')",
     // eslint-disable-next-line quotes
-    banner: "url('/images/banner.png')"
+    banner: "url('/images/banner.jpg')"
   }
 };

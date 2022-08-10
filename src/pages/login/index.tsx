@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
-import { useCallback, useState } from 'react';
+import { lazy, Suspense, useCallback, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 // Components
-import Form from '@components/Form';
-import Text from '@components/Text';
+const Form = lazy(() => import('@components/Form'));
+const Text = lazy(() => import('@components/Text'));
 
 // Contants
 import { ERROR_MESSAGES } from '@constants/messages';
@@ -22,6 +22,7 @@ import { setCurrentUser } from '@helpers/index';
 
 // Components
 import SEO from '@components/SEO';
+import LoadingIndicator from '@components/LoadingIndicator';
 
 interface LoginProps {
   listAccount?: Account[];
@@ -65,7 +66,7 @@ const Login: NextPage<LoginProps> = ({
   }, []);
 
   return (
-    <>
+    <Suspense fallback={<LoadingIndicator />}>
       <SEO
         description="Login to the site"
         siteTitle="Login page"
@@ -80,7 +81,7 @@ const Login: NextPage<LoginProps> = ({
           <Form className="w-1/3" onSubmit={handleSubmit} />
         </div>
       </div>
-    </>
+    </Suspense>
   );
 };
 

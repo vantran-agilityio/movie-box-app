@@ -15,4 +15,8 @@ const getMovieById = async (id: string): Promise<Movie> => {
   return await get(`${MOVIE_URL}/${id}`);
 };
 
-export { getMovies, getMovieById };
+const searchMoviesByName = async (name: string): Promise<Movie[]> => {
+  return await get(`${MOVIE_URL}?name=${name}`);
+};
+
+export { getMovies, getMovieById, searchMoviesByName };

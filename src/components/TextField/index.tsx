@@ -15,6 +15,7 @@ interface TextFieldProps {
   type: TextFieldTypes;
   defaultValue?: string | number;
   errorMessage?: string;
+  onChange?: (value: string) => void;
 }
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
@@ -26,7 +27,8 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       name,
       type,
       defaultValue = '',
-      errorMessage = ''
+      errorMessage = '',
+      onChange = () => null
     },
     ref = null
   ) => {
@@ -35,6 +37,8 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     const handleChange = useCallback((event: ChangeEvent) => {
       const newValue = (event.currentTarget as HTMLInputElement).value;
       setValue(newValue);
+
+      onChange && onChange(newValue);
     }, []);
 
     return (
@@ -47,9 +51,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         <input
           id={name}
           name={name}
-          className={`indent-2 px-2 py-3 text-sm rounded${
-            className && ` ${className}`
-          }`}
+          className={`indent-2 text-sm rounded${className && ` ${className}`}`}
           type={type}
           placeholder={placeholder}
           value={value}
