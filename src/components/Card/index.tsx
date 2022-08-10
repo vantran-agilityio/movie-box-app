@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
 import { FC, memo, useCallback } from 'react';
 import Image from 'next/future/image';
@@ -41,9 +42,15 @@ const Card: FC<CardProps> = ({
           content={releaseYear}
           className="absolute bottom-5 left-3 text-gray-100"
         />
-        <Image src={image} alt={name} width={275} height={350} />
+        <Image
+          src={image}
+          alt={name}
+          width={275}
+          height={350}
+          style={{ width: '100%', height: 'auto' }}
+        />
       </div>
-      <div className="relative px-2 py-2.5">
+      <div className="relative px-4 py-5">
         <div className="w-48">
           <Title
             content={name}

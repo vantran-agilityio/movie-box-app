@@ -1,4 +1,6 @@
+import Footer from '@components/Footer';
 import Navbar from '@components/Navbar';
+import { ROUTES } from '@constants/constants';
 import { useRouter } from 'next/router';
 import { FC, memo, ReactNode } from 'react';
 
@@ -11,10 +13,9 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 
   return (
     <>
-      {pathname !== '/login' && <Navbar />}
+      {pathname !== ROUTES.LOGIN && pathname !== ROUTES[404] && <Navbar />}
       <main>{children}</main>
-      {/* TODO: Implement Footer */}
-      {/* {pathname !== '/login' && <Footer />} */}
+      {pathname !== ROUTES.LOGIN && pathname !== ROUTES[404] && <Footer />}
     </>
   );
 };

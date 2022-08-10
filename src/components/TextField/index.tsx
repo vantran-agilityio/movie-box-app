@@ -39,12 +39,13 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       setValue(newValue);
 
       onChange && onChange(newValue);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
       <div className="flex flex-col mb-4">
         {label && (
-          <label className="mb-2 text-start" htmlFor={name}>
+          <label className="mb-2 text-start text-gray-300" htmlFor={name}>
             {label}
           </label>
         )}

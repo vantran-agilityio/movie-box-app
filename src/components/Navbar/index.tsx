@@ -1,5 +1,5 @@
 // Libraries
-import { FC, memo } from 'react';
+import { FC } from 'react';
 import Link from 'next/link';
 
 const Navbar: FC = () => (
@@ -10,4 +10,4 @@ const Navbar: FC = () => (
   </div>
 );
 
-export default memo(Navbar);
+export default Navbar;

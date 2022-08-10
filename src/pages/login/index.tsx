@@ -5,11 +5,12 @@ import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 // Components
+import LoadingIndicator from '@components/LoadingIndicator';
 const Form = lazy(() => import('@components/Form'));
 const Text = lazy(() => import('@components/Text'));
 
-// Contants
-import { ERROR_MESSAGES } from '@constants/messages';
+// Constants
+import { ROUTES, ERROR_MESSAGES } from '@constants/index';
 
 // Models
 import { Account } from '@models/Account';
@@ -22,7 +23,7 @@ import { setCurrentUser } from '@helpers/index';
 
 // Components
 import SEO from '@components/SEO';
-import LoadingIndicator from '@components/LoadingIndicator';
+import Image from 'next/image';
 
 interface LoginProps {
   listAccount?: Account[];
@@ -55,7 +56,7 @@ const Login: NextPage<LoginProps> = ({
       // set user before redirect
       setCurrentUser(account);
 
-      router.push('/');
+      router.push(ROUTES.MOVIES);
 
       return;
     } catch (error) {
@@ -72,8 +73,25 @@ const Login: NextPage<LoginProps> = ({
         siteTitle="Login page"
         title="Login to the site"
       />
-      <div className="h-screen bg-login bg-center bg-cover bg-no-repeat">
-        <div className="h-full flex flex-col items-center justify-center">
+      <div className="h-screen">
+        <div className="w-full h-screen z-0 absolute">
+          <Image
+            src="/images/background.jpg"
+            layout="fill"
+            alt="login background"
+          />
+        </div>
+        <div className="relative h-full flex flex-col items-center justify-center z-10">
+          <div className="rounded p-4 bg-gray-400">
+            <Text
+              content="USER NAME: DE130099"
+              className="p-1 text-white-100 font-bold"
+            />
+            <Text
+              content="PASSWORD: 123"
+              className="p-1 text-white-100 font-bold"
+            />
+          </div>
           <Text
             content={errorMessage}
             className="text-sm text-red-100 text-start h-4 pt-1"

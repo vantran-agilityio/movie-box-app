@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
 import { lazy, Suspense, useCallback } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
-import Image from 'next/future/image';
+import Image from 'next/image';
 
 // Services
 import { getMovieById, getMovies } from '@services/movie.service';
@@ -11,7 +12,7 @@ import { getMovieById, getMovies } from '@services/movie.service';
 import { Movie } from '@models/Movie';
 
 // Constants
-import { ERROR_MESSAGES } from '@constants/messages';
+import { ROUTES, ERROR_MESSAGES } from '@constants/index';
 
 // Types
 import { ParamsProps } from '@common-types/param';
@@ -31,26 +32,26 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
   const { coverImage = '/images/default-cover.jpg' } = movie;
 
   const handleBack = useCallback(() => {
-    push('/');
+    push(ROUTES.MOVIES);
   }, []);
 
   return (
-    <div
-      className="pt-32 pl-20 h-screen bg-cover bg-no-repeat bg-center"
-      style={{
-        backgroundImage: `url('${coverImage}')`
-      }}
-    >
-      <Image
-        className="bg-white-100 rounded-xl cursor-pointer"
-        src="/icons/arrow-left-short.svg"
-        width="50"
-        height="30"
-        alt="back-icon"
-        onClick={handleBack}
-      />
+    <div className="h-screen relative">
+      <div className="w-full h-screen z-0 absolute">
+        <Image src={coverImage} layout="fill" alt="login background" />
+      </div>
 
-      <div className="flex justify-evenly align-middle ">
+      <div className="absolute top-40 left-20">
+        <Image
+          className="bg-white-100 rounded-xl cursor-pointer"
+          src="/icons/arrow-left-short.svg"
+          width="50"
+          height="50"
+          alt="back-icon"
+          onClick={handleBack}
+        />
+      </div>
+      <div className="pt-40 pl-20 flex justify-evenly align-middle">
         <Suspense fallback={<LoadingIndicator />}>
           <Info movie={movie} />
           <Play />
@@ -68,8 +69,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
       throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
     }
 
-    const paths = response.map(({ id }) => {
-      return { params: { id } };
+    const paths = response.map(({ id, coverImage }) => {
+      return { params: { id, coverImage } };
     });
 
     return {
