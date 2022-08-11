@@ -55,7 +55,6 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [] }) => {
     if (value) {
       const moviesFound: Movie[] = await searchMoviesByName(value);
       setMovies(moviesFound);
-      setOpenTab(openTab);
     } else {
       setMovies(sortMoviesByTabOption(movies, openTab));
     }

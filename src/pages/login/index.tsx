@@ -3,6 +3,7 @@
 import { lazy, Suspense, useCallback, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import Image from 'next/future/image';
 
 // Components
 import LoadingIndicator from '@components/LoadingIndicator';
@@ -18,12 +19,8 @@ import { Account } from '@models/Account';
 // Services
 import { getAccounts } from '@services/account.service';
 
-// Helpers
-import { setCurrentUser } from '@helpers/index';
-
 // Components
 import SEO from '@components/SEO';
-import Image from 'next/image';
 
 interface LoginProps {
   listAccount?: Account[];
@@ -43,18 +40,15 @@ const Login: NextPage<LoginProps> = ({
         throw new Error(errorMessage);
       }
 
-      const userFound = listAccount.findIndex(
+      const userMatched = listAccount.findIndex(
         (accountDb: Account) =>
           accountDb.username === account.username &&
           accountDb.password === account.password
       );
 
-      if (userFound === -1) {
+      if (userMatched === -1) {
         throw new Error(ERROR_MESSAGES.NO_ACCOUNT_FOUND);
       }
-
-      // set user before redirect
-      setCurrentUser(account);
 
       router.push(ROUTES.MOVIES);
 
@@ -74,10 +68,12 @@ const Login: NextPage<LoginProps> = ({
         title="Login to the site"
       />
       <div className="h-screen">
-        <div className="w-full h-screen z-0 absolute">
+        <div className="w-full h-screen z-0 absolute  overflow-hidden">
           <Image
             src="/images/background.jpg"
-            layout="fill"
+            width={1440}
+            height={475}
+            style={{ width: '100%', height: 'auto' }}
             alt="login background"
           />
         </div>

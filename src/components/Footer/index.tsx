@@ -22,16 +22,16 @@ const Footer: FC = () => (
         className="text-[#494C62] uppercase inline-block"
       />
       <ul className="float-right">
-        <MenuItem href={ROUTES.MOVIES} className="ml-8" key="about">
+        <MenuItem href={ROUTES.UNDEFINED} className="ml-8" key="about">
           About
         </MenuItem>
-        <MenuItem href={ROUTES.MOVIES} className="ml-8" key="movies">
+        <MenuItem href={ROUTES.UNDEFINED} className="ml-8" key="movies">
           Movies
         </MenuItem>
-        <MenuItem href={ROUTES.MOVIES} className="ml-8" key="rating">
+        <MenuItem href={ROUTES.UNDEFINED} className="ml-8" key="rating">
           Rating
         </MenuItem>
-        <MenuItem href={ROUTES.MOVIES} className="ml-8" key="contact">
+        <MenuItem href={ROUTES.UNDEFINED} className="ml-8" key="contact">
           Contact
         </MenuItem>
       </ul>
@@ -42,7 +42,7 @@ const Footer: FC = () => (
         className="text-gray-200 inline-block"
       />
       <ul className="float-right">
-        <MenuItem href={ROUTES.MOVIES} className="ml-4" key="twitter">
+        <MenuItem href={ROUTES.UNDEFINED} className="ml-4" key="twitter">
           <Image
             src="/icons/twitter.svg"
             width="30"
@@ -50,7 +50,7 @@ const Footer: FC = () => (
             alt="twitter"
           />
         </MenuItem>
-        <MenuItem href={ROUTES.MOVIES} className="ml-4" key="pinterest">
+        <MenuItem href={ROUTES.UNDEFINED} className="ml-4" key="pinterest">
           <Image
             src="/icons/pinterest.svg"
             width="30"
@@ -58,7 +58,7 @@ const Footer: FC = () => (
             alt="pinterest"
           />
         </MenuItem>
-        <MenuItem href={ROUTES.MOVIES} className="ml-4" key="facebook">
+        <MenuItem href={ROUTES.UNDEFINED} className="ml-4" key="facebook">
           <Image
             src="/icons/facebook.svg"
             width="30"
@@ -66,7 +66,7 @@ const Footer: FC = () => (
             alt="facebook"
           />
         </MenuItem>
-        <MenuItem href={ROUTES.MOVIES} className="ml-4" key="instagram">
+        <MenuItem href={ROUTES.UNDEFINED} className="ml-4" key="instagram">
           <Image
             src="/icons/instagram.svg"
             width="30"

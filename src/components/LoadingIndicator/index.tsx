@@ -1,9 +1,6 @@
 // Libraries
 import React from 'react';
 
-// Style
-// import './index.css';
-
 const LoadingIndicator: React.FC = () => {
   return (
     <div

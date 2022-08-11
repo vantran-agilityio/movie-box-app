@@ -42,6 +42,10 @@
 
 - [Visual studio code](https://code.visualstudio.com)
 
+## DEPLOYMENT
+
+- `https://movie-box-app.vercel.app`
+
 ## DIRECTORY STRUCTURE
 
 ```
@@ -51,29 +55,37 @@
 └── src
     ├── style
     ├── components
+    │   ├── Banner
     │   ├── Button
     │   ├── Card
     │   ├── Text
-    │   ├── TextField
-    │   ├── Title
-    │   ├── Filter
-    │   ├── Icon
+    │   ├── Footer
     │   ├── Form
-    │   ├── Banner
+    │   ├── Info
+    │   ├── Layout
+    │   ├── LoadingIndicator
+    │   ├── MenuItem
+    │   ├── MovieList
+    │   ├── Navbar
+    │   ├── PlayButton
+    │   ├── RatingBox
+    │   ├── SearchBox
+    │   ├── SEO
     │   ├── Tabs
-    │   └── SearchBox
+    │   ├── Text
+    │   ├── TextField
+    │   └── Title
     ├── constants
     ├── helpers
-    ├── services
-    ├── layouts
-    │   ├── Header
-    │   ├── Footer
-    │   └── Main
     ├── models
     ├── pages
+    │   ├── 404
+    │   ├── detail
     │   ├── login
-    │   └── movie-detail
-    └── utils
+    │   └── movie
+    ├── services
+    ├── styles
+    └── themes
 
 ```
 
@@ -88,7 +100,7 @@
 - Checkout branch:
 
   ```bash
-  $ git checkout develop
+  $ git checkout feature/movie-box-app
   ```
 
 - Change directory:

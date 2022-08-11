@@ -5,7 +5,7 @@ interface TextProps {
   className?: string;
 }
 
-const Text: FC<TextProps> = ({ content, className = '' }) => (
+const Text: FC<TextProps> = ({ content, className }) => (
   <p className={`text-sm${className && ` ${className}`}`}>{content}</p>
 );
 

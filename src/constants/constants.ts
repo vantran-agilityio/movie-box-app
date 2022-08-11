@@ -2,7 +2,8 @@ const ROUTES = {
   AUTHENTICATION: 'http://localhost:3000/api/form',
   LOGIN: '/login',
   404: '/404',
-  MOVIES: '/movies'
+  MOVIES: '/movies',
+  UNDEFINED: '#!'
 };
 
 const USER_KEY = 'currentUser';

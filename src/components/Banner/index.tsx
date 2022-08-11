@@ -1,6 +1,6 @@
 // Libraries
 import { FC, memo } from 'react';
-import Image from 'next/image';
+import Image from 'next/future/image';
 
 // Types
 import { TitleVariants } from '@common-types/title';
@@ -9,10 +9,14 @@ import { TitleVariants } from '@common-types/title';
 import Title from '@components/Title';
 
 const Banner: FC = () => (
-  <div className="h-screen">
-    <div className="w-full h-screen z-0 absolute">
-      <Image src="/images/banner.jpg" layout="fill" alt="login background" />
-    </div>
+  <div className="h-screen overflow-hidden">
+    <Image
+      src="/images/banner.jpg"
+      width={1440}
+      height={475}
+      style={{ width: '100%', height: 'auto' }}
+      alt="login background"
+    />
     <div className="absolute bottom-32 left-10">
       <Title
         content="wrath of the titans"

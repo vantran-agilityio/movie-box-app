@@ -1,5 +1,5 @@
 // Libraries
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 // Types
 import { TitleVariants } from '@common-types/title';
@@ -18,4 +18,4 @@ const Title: FC<TitleProps> = ({
   <div className={`${variant}${className && ` ${className}`}`}>{content}</div>
 );
 
-export default Title;
+export default memo(Title);

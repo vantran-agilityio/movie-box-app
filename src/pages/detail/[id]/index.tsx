@@ -3,7 +3,7 @@
 import { lazy, Suspense, useCallback } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
+import Image from 'next/future/image';
 
 // Services
 import { getMovieById, getMovies } from '@services/movie.service';
@@ -15,12 +15,12 @@ import { Movie } from '@models/Movie';
 import { ROUTES, ERROR_MESSAGES } from '@constants/index';
 
 // Types
-import { ParamsProps } from '@common-types/param';
+import { ParamsProps } from '@common-types/paramProps';
 import LoadingIndicator from '@components/LoadingIndicator';
 
 // Components
 const Info = lazy(() => import('@components/Info'));
-const Play = lazy(() => import('@components/Play'));
+const PlayButton = lazy(() => import('@components/PlayButton'));
 
 interface DetailProps {
   movie: Movie;
@@ -37,8 +37,14 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
 
   return (
     <div className="h-screen relative">
-      <div className="w-full h-screen z-0 absolute">
-        <Image src={coverImage} layout="fill" alt="login background" />
+      <div className="w-full h-screen z-0 absolute overflow-hidden">
+        <Image
+          src={coverImage}
+          alt="login background"
+          width={1440}
+          height={475}
+          style={{ width: '100%', height: 'auto' }}
+        />
       </div>
 
       <div className="absolute top-40 left-20">
@@ -54,7 +60,7 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
       <div className="pt-40 pl-20 flex justify-evenly align-middle">
         <Suspense fallback={<LoadingIndicator />}>
           <Info movie={movie} />
-          <Play />
+          <PlayButton />
         </Suspense>
       </div>
     </div>

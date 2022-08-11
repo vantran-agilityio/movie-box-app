@@ -13,7 +13,6 @@ interface TextFieldProps {
   placeholder?: string;
   name: string;
   type: TextFieldTypes;
-  defaultValue?: string | number;
   errorMessage?: string;
   onChange?: (value: string) => void;
 }
@@ -26,13 +25,12 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       placeholder,
       name,
       type,
-      defaultValue = '',
       errorMessage = '',
       onChange = () => null
     },
     ref = null
   ) => {
-    const [value, setValue] = useState<string | number>(defaultValue);
+    const [value, setValue] = useState<string | number>('');
 
     const handleChange = useCallback((event: ChangeEvent) => {
       const newValue = (event.currentTarget as HTMLInputElement).value;

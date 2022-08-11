@@ -21,7 +21,7 @@ interface FormProps {
   onSubmit: (account: Account) => void;
 }
 
-const Form: FC<FormProps> = ({ className, onSubmit }) => {
+const Form: FC<FormProps> = ({ className = '', onSubmit }) => {
   const [isSubmit, setIsSubmit] = useState(false);
   const [account, setAccount] = useState<Account>({
     username: '',

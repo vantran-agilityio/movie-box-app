@@ -14,7 +14,7 @@ interface ButtonProps {
 
 const Button: FC<ButtonProps> = ({
   children,
-  className,
+  className = '',
   variant = ButtonVariants.default,
   isDisabled = false,
   onClick = () => null

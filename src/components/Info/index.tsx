@@ -26,7 +26,7 @@ const Info: FC<InfoProps> = ({
       className="font-bold "
     />
     <div className="py-2">
-      <span className="font-bold text-white-100">Genre: </span>{' '}
+      <span className="font-bold text-white-100">Genre: </span>
       {genres.map((genre: Genres, index: number, genres: Genres[]) => (
         <div key={genre} className="inline-block">
           <Title

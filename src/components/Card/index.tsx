@@ -48,6 +48,7 @@ const Card: FC<CardProps> = ({
           width={275}
           height={350}
           style={{ width: '100%', height: 'auto' }}
+          className="w-[275px] h-[350px]"
         />
       </div>
       <div className="relative px-4 py-5">

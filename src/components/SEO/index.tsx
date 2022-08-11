@@ -11,7 +11,7 @@ interface SEOProps {
 const SEO: FC<SEOProps> = ({ title, description, siteTitle }) => (
   <Head>
     <title>{title}</title>
-    <link rel="icon" href="/icons/logo.png" />
+    <link rel="icon" href="/icons/logo.svg" />
     <meta name="description" content={description} />
     <meta name="description" content={description} />
     <meta property="og:type" content="website" />
