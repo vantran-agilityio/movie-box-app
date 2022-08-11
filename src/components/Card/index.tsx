@@ -37,7 +37,7 @@ const Card: FC<CardProps> = ({
       }`}
       onClick={handleClick}
     >
-      <div className="relative">
+      <div className="relative w-[275px]">
         <Text
           content={releaseYear}
           className="absolute bottom-5 left-3 text-gray-100"
