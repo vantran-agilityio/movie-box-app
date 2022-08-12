@@ -10,6 +10,8 @@ import { sortMoviesByTabOption } from '@helpers/sort';
 import { Movie } from '@models/Movie';
 
 // Components
+import LoadingIndicator from '@components/LoadingIndicator';
+const SearchBox = lazy(() => import('@components/SearchBox'));
 const Banner = lazy(() => import('@components/Banner'));
 const SEO = lazy(() => import('@components/SEO'));
 const Tabs = lazy(() => import('@components/Tabs'));
@@ -23,8 +25,7 @@ import { ERROR_MESSAGES } from '@constants/messages';
 
 // Types
 import { TabOption, TAB_OPTION_LIST } from '@common-types/tabs';
-import LoadingIndicator from '@components/LoadingIndicator';
-import SearchBox from '@components/SearchBox';
+import { MoviesResponse } from '@common-types/apiResponse';
 
 interface MoviesProps {
   movieList: Movie[];
@@ -53,8 +54,8 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [] }) => {
    */
   const handleSearchMovies = useCallback(async (value: string) => {
     if (value) {
-      const moviesFound: Movie[] = await searchMoviesByName(value);
-      setMovies(moviesFound);
+      const moviesFound: MoviesResponse = await searchMoviesByName(value);
+      setMovies(moviesFound.movies || []);
     } else {
       setMovies(sortMoviesByTabOption(movies, openTab));
     }
@@ -85,14 +86,14 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [] }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const response: Movie[] = await getMovies();
+    const response: MoviesResponse = await getMovies();
 
     if (!response) {
       throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
     }
 
     return {
-      props: { movieList: response }
+      props: { movieList: response.movies }
     };
   } catch (error) {
     if (error instanceof Error) {

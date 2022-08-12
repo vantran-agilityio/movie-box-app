@@ -5,4 +5,10 @@ const ERROR_MESSAGES = {
   NO_ACCOUNT_FOUND: 'No Account Found!'
 };
 
-export { ERROR_MESSAGES };
+const RESPONSE_MESSAGES = {
+  200: 'OK',
+  204: 'No Content',
+  405: 'Method is not allow!'
+};
+
+export { ERROR_MESSAGES, RESPONSE_MESSAGES };

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
 import { lazy, Suspense, useCallback, useState } from 'react';
-import type { NextPage } from 'next';
+import type { NextPage, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import Image from 'next/future/image';
 
@@ -11,7 +11,7 @@ const Form = lazy(() => import('@components/Form'));
 const Text = lazy(() => import('@components/Text'));
 
 // Constants
-import { ROUTES, ERROR_MESSAGES } from '@constants/index';
+import { ROUTES, ERROR_MESSAGES, RESPONSE_MESSAGES } from '@constants/index';
 
 // Models
 import { Account } from '@models/Account';
@@ -21,6 +21,9 @@ import { getAccounts } from '@services/account.service';
 
 // Components
 import SEO from '@components/SEO';
+
+// Types
+import { AccountResponse } from '@common-types/apiResponse';
 
 interface LoginProps {
   listAccount?: Account[];
@@ -99,17 +102,17 @@ const Login: NextPage<LoginProps> = ({
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   try {
-    const response: Account[] = await getAccounts();
+    const { users, message }: AccountResponse = await getAccounts();
 
-    if (!response) {
-      throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+    if (message === RESPONSE_MESSAGES[200]) {
+      return {
+        props: { listAccount: users }
+      };
     }
 
-    return {
-      props: { listAccount: response }
-    };
+    throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
   } catch (error) {
     if (error instanceof Error) {
       return { props: { errorMessage: error.message } };
@@ -117,6 +120,6 @@ export async function getStaticProps() {
 
     return { props: {} };
   }
-}
+};
 
 export default Login;

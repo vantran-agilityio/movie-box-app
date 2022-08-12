@@ -1,5 +1,4 @@
 const ROUTES = {
-  AUTHENTICATION: 'http://localhost:3000/api/form',
   LOGIN: '/login',
   404: '/404',
   MOVIES: '/movies',
@@ -8,4 +7,11 @@ const ROUTES = {
 
 const USER_KEY = 'currentUser';
 
-export { ROUTES, USER_KEY };
+const METHODS = {
+  POST: 'POST',
+  GET: 'GET',
+  DELETE: 'DELETE',
+  PUT: 'PUT'
+};
+
+export { ROUTES, USER_KEY, METHODS };

@@ -12,13 +12,14 @@ import { getMovieById, getMovies } from '@services/movie.service';
 import { Movie } from '@models/Movie';
 
 // Constants
-import { ROUTES, ERROR_MESSAGES } from '@constants/index';
+import { ROUTES, ERROR_MESSAGES, RESPONSE_MESSAGES } from '@constants/index';
 
 // Types
 import { ParamsProps } from '@common-types/paramProps';
-import LoadingIndicator from '@components/LoadingIndicator';
+import { MovieResponse, MoviesResponse } from '@common-types/apiResponse';
 
 // Components
+import LoadingIndicator from '@components/LoadingIndicator';
 const Info = lazy(() => import('@components/Info'));
 const PlayButton = lazy(() => import('@components/PlayButton'));
 
@@ -29,7 +30,7 @@ interface DetailProps {
 const Detail: NextPage<DetailProps> = ({ movie }) => {
   const { push } = useRouter();
 
-  const { coverImage = '/images/default-cover.jpg' } = movie;
+  const { coverImage = '/images/default-cover.jpg' } = movie || {};
 
   const handleBack = useCallback(() => {
     push(ROUTES.MOVIES);
@@ -69,20 +70,20 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
-    const response: Movie[] = await getMovies();
+    const response: MoviesResponse = await getMovies();
 
-    if (!response) {
-      throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
+    if (response.message === RESPONSE_MESSAGES[200] && response.movies) {
+      const paths = response?.movies.map(({ id }) => {
+        return { params: { id } };
+      });
+
+      return {
+        paths,
+        fallback: false
+      };
     }
 
-    const paths = response.map(({ id, coverImage }) => {
-      return { params: { id, coverImage } };
-    });
-
-    return {
-      paths,
-      fallback: false
-    };
+    throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
   } catch (error) {
     if (error instanceof Error) {
       return { fallback: true, paths: [] };
@@ -99,11 +100,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     if (!id) {
       throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
     }
-    const movie = await getMovieById(id);
+    const { movie, message }: MovieResponse = await getMovieById(id);
 
-    return {
-      props: { movie }
-    };
+    if (message === RESPONSE_MESSAGES[200]) {
+      return {
+        props: { movie }
+      };
+    }
+
+    throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
   } catch (error) {
     if (error instanceof Error) {
       return { props: { errorMessage: error.message } };

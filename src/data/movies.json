@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Logan",
+    "genres": ["Action", "Adventure", "Fantasy"],
+    "image": "https://lh5.googleusercontent.com/m0DncCclLuK-9ybM3pd_mNsN00GwDQ6JJtWxbe3mohlP-E3dP01ZQPnK38wybL3Rp5M=w2400",
+    "rating": 4,
+    "releaseYear": 1999,
+    "id": "1",
+    "coverImage": "https://lh3.googleusercontent.com/qzDIRuceKc-cs_aComoBHfgWx37YtzXNeiURV882ANEWQhZvI0tc9nlBbk50OJJtMUQ=w2400"
+  },
+  {
+    "name": "John Wick: Chapter 2",
+    "genres": ["Action", "Thriller"],
+    "image": "https://lh5.googleusercontent.com/buY93ezdDKfnMX3-rXmSgeE3WrPcSQMedV5ldv7pOX01RdgUH4RqTw3beznHXKGr8fw=w2400",
+    "rating": 4.5,
+    "releaseYear": 2017,
+    "id": "2",
+    "coverImage": "https://lh4.googleusercontent.com/UJpYs1RImbqvxm4vitbtUaauu75W6AGK1KWJwv027Mm03ALUDR7IWFrs4RYvsBWD-W4=w2400"
+  },
+  {
+    "name": "Fantasy beasts and Magics",
+    "genres": ["Adventure", "Fantasy", "Action"],
+    "image": "https://lh3.googleusercontent.com/s3IMlKk3My-uFdHRbWgMepOqiXttR788rTObP9unwIOa5nKzrtuza6NNFRfXgm-o8JA=w2400",
+    "rating": 4.9,
+    "releaseYear": 2018,
+    "id": "3",
+    "coverImage": "https://lh3.googleusercontent.com/sJUB7d2CZzhf0KMuKCSUL_Dt2IV7HiHuXBWl9wHtWLoJ3YMlPMg_grwDmkn95dWzOO0=w2400"
+  },
+  {
+    "name": "Beauty and the Beast",
+    "genres": ["Musical", "Drama", "Fantasy"],
+    "image": "https://lh4.googleusercontent.com/42C5g4unU7slpL4CP8k6y3kGskDugbjn546Vw3JV94qPVasFGUJVn5U6B2PboAJjLcQ=w2400",
+    "rating": 4,
+    "releaseYear": 2018,
+    "id": "4",
+    "coverImage": "https://lh4.googleusercontent.com/tNGHq_nX2MsUKH396SqZ_rhZr949fmvm-SHa3repMELu639NG8-e5B16RWA8-3Ylmhc=w2400"
+  },
+  {
+    "name": "Justic League",
+    "genres": ["Adventure", "Sci-Fi", "Action"],
+    "image": "https://lh4.googleusercontent.com/g7_y0pDkBdLgVzDpZ1ZDDpZ9wSkqdNfMjDImk7_f3n29yVylfdsTmsiZajiuj1Sl4Yk=w2400",
+    "rating": 4.9,
+    "releaseYear": 2020,
+    "id": "5",
+    "coverImage": "https://lh4.googleusercontent.com/WnXPPwYj_y_ZRbo2dwf98jXcVtopCoG7LSW5dyjwkXgWl7zjwFarmbS82DaTBB-fSP4=w2400"
+  },
+  {
+    "name": "Pirates of the Caribbe",
+    "genres": ["Advance", "Fantasy", "Action"],
+    "image": "https://lh3.googleusercontent.com/DYOhlduVjjduG5pQO5K6oEBxcIK8acns1o3z_pfMPnP9mQm7w1ryb7kEQbR_8CEgffs=w2400",
+    "rating": 4.8,
+    "releaseYear": 1999,
+    "id": "6",
+    "coverImage": "https://lh6.googleusercontent.com/6JizX-ikLx7WKOEZT6xLyOxurfajRnshS8FBtvfdpuVGRJeKW5q2py91nVqep6hvDbM=w2400"
+  },
+  {
+    "name": "Wonder Woman",
+    "genres": ["Action", "Adventure", "Sci-Fi"],
+    "image": "https://lh6.googleusercontent.com/H9l-wW2fHxV7TdKVL-2tLTnHg6VWWVvF71mm1n5LEjncsr-StXMsUB2e8TvPSVBhxnI=w2400",
+    "rating": 4.8,
+    "releaseYear": 1999,
+    "id": "7",
+    "coverImage": "https://lh6.googleusercontent.com/uFaXG9RFOdo9EWTvy0KySwFRjlTVz9JJyFvX7RXfoLxQtX_aF337iMm3lT_KgTzcnnE=w2400"
+  }
+]
