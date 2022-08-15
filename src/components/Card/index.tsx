@@ -48,6 +48,8 @@ const Card: FC<CardProps> = ({
           width={275}
           height={350}
           style={{ width: '100%', height: 'auto' }}
+          placeholder="blur"
+          blurDataURL="/images/blur.jpg"
           className="w-[275px] h-[350px]"
         />
       </div>

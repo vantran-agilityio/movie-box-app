@@ -41,10 +41,12 @@ const Detail: NextPage<DetailProps> = ({ movie }) => {
       <div className="w-full h-screen z-0 absolute overflow-hidden">
         <Image
           src={coverImage}
-          alt="login background"
+          alt="detail background"
           width={1440}
           height={475}
           style={{ width: '100%', height: 'auto' }}
+          placeholder="blur"
+          blurDataURL="/images/blur.jpg"
         />
       </div>
 

@@ -24,6 +24,15 @@ const nextConfig = {
       'lh6.googleusercontent.com',
       'drive.google.com'
     ]
+  },
+  trailingSlash: true,
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      '/movies': { page: '/movies' }
+    };
   }
 };
 

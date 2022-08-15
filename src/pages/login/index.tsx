@@ -77,6 +77,8 @@ const Login: NextPage<LoginProps> = ({
             width={1440}
             height={475}
             style={{ width: '100%', height: 'auto' }}
+            placeholder="blur"
+            blurDataURL="/images/blur.jpg"
             alt="login background"
           />
         </div>
