@@ -1,6 +1,6 @@
 // Libraries
+import { FC, memo } from 'react';
 import Image from 'next/future/image';
-import { FC } from 'react';
 
 // Types
 import { TitleVariants } from '@common-types/title';
@@ -12,6 +12,9 @@ import Title from '@components/Title';
 
 // Constants
 import { ROUTES } from '@constants/constants';
+
+// Helpers
+import { internalLoader } from '@helpers/image';
 
 const Footer: FC = () => (
   <footer className="px-10 py-8">
@@ -44,6 +47,7 @@ const Footer: FC = () => (
       <ul className="float-right">
         <MenuItem href={ROUTES.UNDEFINED} className="ml-4" key="twitter">
           <Image
+            loader={internalLoader}
             src="/icons/twitter.svg"
             width="30"
             height="30"
@@ -52,6 +56,7 @@ const Footer: FC = () => (
         </MenuItem>
         <MenuItem href={ROUTES.UNDEFINED} className="ml-4" key="pinterest">
           <Image
+            loader={internalLoader}
             src="/icons/pinterest.svg"
             width="30"
             height="30"
@@ -60,6 +65,7 @@ const Footer: FC = () => (
         </MenuItem>
         <MenuItem href={ROUTES.UNDEFINED} className="ml-4" key="facebook">
           <Image
+            loader={internalLoader}
             src="/icons/facebook.svg"
             width="30"
             height="30"
@@ -68,6 +74,7 @@ const Footer: FC = () => (
         </MenuItem>
         <MenuItem href={ROUTES.UNDEFINED} className="ml-4" key="instagram">
           <Image
+            loader={internalLoader}
             src="/icons/instagram.svg"
             width="30"
             height="30"

@@ -1,4 +1,6 @@
-const BASE_URL = process.env.NEXT_PUBLIC_SECRET_KEY;
+const BASE_URL =
+  process.env.NEXT_PUBLIC_DEVELOPMENT_ENV_VARIABLE ||
+  process.env.NEXT_PUBLIC_PRODUCTION_ENV_VARIABLE;
 
 const ACCOUNT_URL = `${BASE_URL}/api/account`;
 const MOVIE_URL = `${BASE_URL}/api/movie`;

@@ -1,8 +1,8 @@
 const ROUTES = {
   LOGIN: '/login',
   404: '/404',
-  MOVIES: '/movies',
-  UNDEFINED: '#!'
+  MOVIES: '/home',
+  UNDEFINED: '/'
 };
 
 const USER_KEY = 'currentUser';

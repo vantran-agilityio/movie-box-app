@@ -6,39 +6,17 @@ import '../styles/globals.css';
 import 'tailwindcss/tailwind.css';
 
 // Components
-import Layout from '@components/Layout';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import LoadingIndicator from '@components/LoadingIndicator';
+import ErrorBoundary from '@components/ErrorBoundary';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter();
+// Layout
+import Layout from './layout';
 
-  const [pageLoading, setPageLoading] = useState<boolean>(false);
+const MyApp = ({ Component, pageProps }: AppProps) => (
+  <ErrorBoundary>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  </ErrorBoundary>
+);
 
-  useEffect(() => {
-    const handleStart = () => {
-      setPageLoading(true);
-    };
-    const handleComplete = () => {
-      setPageLoading(false);
-    };
-
-    router.events.on('routeChangeStart', handleStart);
-    router.events.on('routeChangeComplete', handleComplete);
-    router.events.on('routeChangeError', handleComplete);
-  }, [router]);
-
-  return (
-    <>
-      {pageLoading ? (
-        <LoadingIndicator />
-      ) : (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      )}
-    </>
-  );
-}
 export default MyApp;

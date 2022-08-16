@@ -2,6 +2,7 @@ import { FC, memo } from 'react';
 import Image from 'next/future/image';
 import TextField from '@components/TextField';
 import { TextFieldTypes } from '@common-types/textfield';
+import { internalLoader } from '@helpers/image';
 
 interface SearchBoxProps {
   className?: string;
@@ -19,6 +20,8 @@ const SearchBox: FC<SearchBoxProps> = ({ className = '', onChange }) => {
       />
       <div className="absolute w-6 right-4 top-2.5">
         <Image
+          loader={internalLoader}
+          unoptimized
           src="/icons/search.svg"
           alt="Search Icon"
           width={20}

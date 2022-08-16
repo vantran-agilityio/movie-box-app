@@ -8,16 +8,22 @@ import { TitleVariants } from '@common-types/title';
 // Components
 import Title from '@components/Title';
 
+// Helpers
+import { internalLoader } from '@helpers/image';
+
 const Banner: FC = () => (
   <div className="h-screen overflow-hidden">
     <Image
+      loader={internalLoader}
+      unoptimized
       src="/images/banner.jpg"
       width={1440}
       height={475}
       style={{ width: '100%', height: 'auto' }}
       placeholder="blur"
       blurDataURL="/images/blur.jpg"
-      alt="login background"
+      alt="banner background"
+      sizes="100vw"
     />
     <div className="absolute bottom-32 left-10">
       <Title

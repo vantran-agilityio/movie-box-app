@@ -16,10 +16,14 @@ import { Movie } from '@models/Movie';
 import { TitleVariants } from '@common-types/title';
 import { useRouter } from 'next/router';
 
+// Helpers
+import { externalLoader } from '@helpers/index';
+
 interface CardProps {
   className?: string;
   movie: Movie;
 }
+
 const Card: FC<CardProps> = ({
   className = '',
   movie: { id, name, genres, image, rating, releaseYear }
@@ -43,6 +47,7 @@ const Card: FC<CardProps> = ({
           className="absolute bottom-5 left-3 text-gray-100"
         />
         <Image
+          loader={externalLoader}
           src={image}
           alt={name}
           width={275}
@@ -50,7 +55,7 @@ const Card: FC<CardProps> = ({
           style={{ width: '100%', height: 'auto' }}
           placeholder="blur"
           blurDataURL="/images/blur.jpg"
-          className="w-[275px] h-[350px]"
+          loading="lazy"
         />
       </div>
       <div className="relative px-4 py-5">

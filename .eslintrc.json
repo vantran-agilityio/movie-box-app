@@ -2,7 +2,11 @@
   "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
   "rules": {
     "eqeqeq": "error",
-    "indent": ["error", 2, { "ignoredNodes": ["TemplateLiteral > *"] }],
+    "indent": [
+      "error",
+      2,
+      { "ignoredNodes": ["TemplateLiteral > *"], "SwitchCase": 1 }
+    ],
     "curly": ["error", "all"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],

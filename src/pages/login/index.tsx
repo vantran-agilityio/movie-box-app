@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
 import { lazy, Suspense, useCallback, useState } from 'react';
-import type { NextPage, GetStaticProps } from 'next';
+import type { NextPage, GetStaticProps, GetStaticPropsResult } from 'next';
 import { useRouter } from 'next/router';
+
+// Helpers
 import Image from 'next/future/image';
 
 // Components
@@ -24,6 +26,7 @@ import SEO from '@components/SEO';
 
 // Types
 import { AccountResponse } from '@common-types/apiResponse';
+import { internalLoader } from '@helpers/image';
 
 interface LoginProps {
   listAccount?: Account[];
@@ -70,9 +73,10 @@ const Login: NextPage<LoginProps> = ({
         siteTitle="Login page"
         title="Login to the site"
       />
-      <div className="h-screen">
-        <div className="w-full h-screen z-0 absolute  overflow-hidden">
+      <main className="h-screen">
+        <div className="w-full h-screen z-0 absolute overflow-hidden">
           <Image
+            loader={internalLoader}
             src="/images/background.jpg"
             width={1440}
             height={475}
@@ -80,6 +84,7 @@ const Login: NextPage<LoginProps> = ({
             placeholder="blur"
             blurDataURL="/images/blur.jpg"
             alt="login background"
+            sizes="100vw"
           />
         </div>
         <div className="relative h-full flex flex-col items-center justify-center z-10">
@@ -99,12 +104,14 @@ const Login: NextPage<LoginProps> = ({
           />
           <Form className="w-1/3" onSubmit={handleSubmit} />
         </div>
-      </div>
+      </main>
     </Suspense>
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (): Promise<
+  GetStaticPropsResult<LoginProps>
+> => {
   try {
     const { users, message }: AccountResponse = await getAccounts();
 

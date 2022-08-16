@@ -12,28 +12,31 @@ import { METHODS, RESPONSE_MESSAGES, DataPath } from '@constants/index';
 import { Movie } from '@models/Movie';
 
 export const handler = async (
-  { query, method }: NextApiRequest,
+  { query: { id }, method }: NextApiRequest,
   res: NextApiResponse<MovieResponse>
 ) => {
-  const { id } = query;
+  switch (method) {
+    case METHODS.GET:
+      const fileContents = await fs.readFile(DataPath.Movies, 'utf8');
 
-  if (method === METHODS.GET) {
-    const fileContents = await fs.readFile(DataPath.Movies, 'utf8');
+      const movies: Movie[] = JSON.parse(fileContents);
 
-    const movies: Movie[] = JSON.parse(fileContents);
+      const movie: Movie | undefined = movies.find(
+        (item: Movie) => item.id === id
+      );
 
-    const movie: Movie | undefined = movies.find(
-      (item: Movie) => item.id === id
-    );
+      if (!movie) {
+        res.status(204).json({ message: RESPONSE_MESSAGES[204] });
+        return;
+      }
 
-    if (!movie) {
-      res.status(204).json({ message: RESPONSE_MESSAGES[204] });
-      return;
-    }
+      res.status(200).json({ movie, message: RESPONSE_MESSAGES[200] });
 
-    res.status(200).json({ movie, message: RESPONSE_MESSAGES[200] });
-  } else {
-    res.status(405).json({ message: RESPONSE_MESSAGES[405] });
+      break;
+
+    default:
+      res.setHeader('Allow', [METHODS.GET]);
+      res.status(405).end(RESPONSE_MESSAGES[405]);
   }
 };
 
