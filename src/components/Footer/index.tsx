@@ -1,5 +1,5 @@
 // Libraries
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import Image from 'next/future/image';
 
 // Types
@@ -80,10 +80,11 @@ const Footer: FC = () => (
             height="30"
             alt="instagram"
           />
+          <>{console.log('Footer rereder')}</>
         </MenuItem>
       </ul>
     </div>
   </footer>
 );
 
-export default Footer;
+export default memo(Footer);

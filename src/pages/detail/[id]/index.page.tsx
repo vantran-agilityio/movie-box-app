@@ -33,7 +33,8 @@ const PlayButton = lazy(() => import('@components/PlayButton'));
 const Text = lazy(() => import('@components/Text'));
 
 // Layout
-import Layout from './layout';
+import Layout from './layout.page';
+import SEO from '@components/SEO';
 
 interface DetailProps {
   movie?: Movie;
@@ -41,7 +42,7 @@ interface DetailProps {
 }
 
 const Detail: NextPage<DetailProps> = ({ movie, errorMessage = '' }) => {
-  const { push } = useRouter();
+  const { push, asPath } = useRouter();
 
   const { coverImage = '/images/default-cover.jpg' } = movie || {};
 
@@ -50,46 +51,52 @@ const Detail: NextPage<DetailProps> = ({ movie, errorMessage = '' }) => {
   }, []);
 
   return (
-    <Layout>
-      <div className="h-screen relative">
-        <div className="w-full h-screen z-0 absolute overflow-hidden">
-          <Image
-            loader={movie?.coverImage ? externalLoader : internalLoader}
-            src={coverImage}
-            alt="detail background"
-            width={1440}
-            height={475}
-            style={{ width: '100%', height: 'auto' }}
-            placeholder="blur"
-            blurDataURL="/images/blur.jpg"
-            sizes="100vw"
-          />
-        </div>
+    <>
+      <SEO
+        description={movie?.name || asPath}
+        siteTitle={movie?.name || asPath}
+        title={movie?.name || asPath}
+      />
+      <Layout>
+        <div className="h-screen relative">
+          <div className="w-full h-screen z-0 absolute overflow-hidden">
+            <Image
+              loader={movie?.coverImage ? externalLoader : internalLoader}
+              src={coverImage}
+              alt="detail background"
+              width={1440}
+              height={475}
+              style={{ width: '100%', height: 'auto' }}
+              placeholder="blur"
+              blurDataURL="/images/blur.jpg"
+              sizes="100vw"
+            />
+          </div>
 
-        <div className="absolute top-40 left-20 w-10 bg-white-100 rounded-xl cursor-pointer">
-          <Image
-            loader={internalLoader}
-            unoptimized
-            src="/icons/arrow-left-short.svg"
-            width="50"
-            height="50"
-            alt="back-icon"
-            style={{ width: '100%', height: 'auto' }}
-            onClick={handleBack}
-          />
+          <div className="absolute top-40 left-20 w-10 bg-white-100 rounded-xl cursor-pointer">
+            <Image
+              loader={internalLoader}
+              src="/icons/arrow-left-short.svg"
+              width="50"
+              height="50"
+              alt="back-icon"
+              style={{ width: '100%', height: 'auto' }}
+              onClick={handleBack}
+            />
+          </div>
+          <div className="pt-40 pl-20 flex justify-evenly align-middle">
+            <Suspense fallback={<LoadingIndicator />}>
+              {movie ? (
+                <Info movie={movie} />
+              ) : (
+                <Text content={errorMessage} className="text-red-100 z-10" />
+              )}
+              <PlayButton />
+            </Suspense>
+          </div>
         </div>
-        <div className="pt-40 pl-20 flex justify-evenly align-middle">
-          <Suspense fallback={<LoadingIndicator />}>
-            {movie ? (
-              <Info movie={movie} />
-            ) : (
-              <Text content={errorMessage} className="text-red-100 z-10" />
-            )}
-            <PlayButton />
-          </Suspense>
-        </div>
-      </div>
-    </Layout>
+      </Layout>
+    </>
   );
 };
 

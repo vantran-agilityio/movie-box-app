@@ -9,7 +9,7 @@ import 'tailwindcss/tailwind.css';
 import ErrorBoundary from '@components/ErrorBoundary';
 
 // Layout
-import Layout from './layout';
+import Layout from './layout.page';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <ErrorBoundary>

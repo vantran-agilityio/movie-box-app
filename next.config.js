@@ -31,7 +31,8 @@ const nextConfig = {
     minimumCacheTTL: 60,
     loader: 'custom'
   },
-  trailingSlash: true
+  trailingSlash: true,
+  pageExtensions: ['page.tsx', 'api.ts']
 };
 
 module.exports = nextConfig;

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Libraries
-import { lazy, memo, Suspense, useCallback, useState } from 'react';
+import { lazy, Suspense, useCallback, useMemo, useState } from 'react';
 import type { GetStaticProps, GetStaticPropsResult, NextPage } from 'next';
 
 // Helpers
@@ -31,7 +31,7 @@ import { MoviesResponse } from '@common-types/apiResponse';
 import { ApiError } from '@common-types/error';
 
 // Layouts
-import Layout from './layout';
+import Layout from './layout.page';
 
 interface MoviesProps {
   movieList?: Movie[];
@@ -80,8 +80,8 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [], error = '' }) => {
     }
   }, []);
 
-  return (
-    <Layout>
+  const child = useMemo(
+    () => (
       <Suspense fallback={<LoadingIndicator />}>
         <SEO
           description="The greatest movies you must known!"
@@ -106,8 +106,11 @@ const Movies: NextPage<MoviesProps> = ({ movieList = [], error = '' }) => {
           </ErrorBoundary>
         </section>
       </Suspense>
-    </Layout>
+    ),
+    [movies, openTab]
   );
+
+  return <Layout>{child}</Layout>;
 };
 
 export const getStaticProps: GetStaticProps = async (): Promise<
@@ -136,4 +139,4 @@ export const getStaticProps: GetStaticProps = async (): Promise<
   }
 };
 
-export default memo(Movies);
+export default Movies;
