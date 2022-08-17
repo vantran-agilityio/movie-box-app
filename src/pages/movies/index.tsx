@@ -33,7 +33,7 @@ import { ApiError } from '@common-types/error';
 // Layouts
 import Layout from './layout';
 import { MOVIE_URL } from '@constants/api';
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 interface MoviesProps {
   movieList?: Movie[];
@@ -131,6 +131,9 @@ export const getStaticProps: GetStaticProps = async (): Promise<
       props: { movieList: response.movies }
     };
   } catch (error) {
+    if (error instanceof AxiosError) {
+      console.log('(error instanceof AxiosResponse', error);
+    }
     if (error instanceof ApiError) {
       console.log('error', error);
 
