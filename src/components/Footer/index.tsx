@@ -80,7 +80,6 @@ const Footer: FC = () => (
             height="30"
             alt="instagram"
           />
-          <>{console.log('Footer rereder')}</>
         </MenuItem>
       </ul>
     </div>

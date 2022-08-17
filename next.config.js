@@ -32,7 +32,7 @@ const nextConfig = {
     loader: 'custom'
   },
   trailingSlash: true,
-  pageExtensions: ['page.tsx', 'api.ts']
+  pageExtensions: ['page.tsx', 'ts']
 };
 
 module.exports = nextConfig;

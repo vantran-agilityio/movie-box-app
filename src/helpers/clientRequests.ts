@@ -15,6 +15,8 @@ import { ApiError } from '@common-types/error';
  */
 const get = async <T>(url: string): Promise<T> => {
   try {
+    console.log('url', url);
+
     const res: AxiosResponse<T> = await axios.get(url);
 
     return res.data;
