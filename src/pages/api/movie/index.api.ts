@@ -10,6 +10,7 @@ import { METHODS, RESPONSE_MESSAGES, DataPath } from '@constants/index';
 
 // Models
 import { Movie } from '@models/Movie';
+import { Genres } from '@common-types/movieGenreTypes';
 
 export const handler = async (
   { method, query: { name = '' } }: NextApiRequest,
@@ -19,9 +20,22 @@ export const handler = async (
     case METHODS.GET:
       const fileContents = await fs.readFile(DataPath.Movies, 'utf8');
       const parseMovies: Movie[] = JSON.parse(fileContents);
+      const movieData: Movie[] = [
+        {
+          name: 'Logan',
+          genres: [Genres.Action],
+          image:
+            'https://lh5.googleusercontent.com/m0DncCclLuK-9ybM3pd_mNsN00GwDQ6JJtWxbe3mohlP-E3dP01ZQPnK38wybL3Rp5M',
+          rating: 4,
+          releaseYear: 1999,
+          id: '1',
+          coverImage:
+            'https://lh3.googleusercontent.com/qzDIRuceKc-cs_aComoBHfgWx37YtzXNeiURV882ANEWQhZvI0tc9nlBbk50OJJtMUQ'
+        }
+      ];
 
       if (name) {
-        const movies: Movie[] = parseMovies.filter((item: Movie) =>
+        const movies: Movie[] = movieData.filter((item: Movie) =>
           item.name.includes(name as string)
         );
 
@@ -35,7 +49,9 @@ export const handler = async (
       } else {
         const movies: Movie[] = JSON.parse(fileContents);
 
-        res.status(200).json({ movies, message: RESPONSE_MESSAGES[200] });
+        res
+          .status(200)
+          .json({ movies: movieData, message: RESPONSE_MESSAGES[200] });
         break;
       }
 
