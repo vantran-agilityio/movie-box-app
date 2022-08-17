@@ -115,6 +115,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
 > => {
   try {
     const response: MoviesResponse = await getMovies();
+    console.log('response', response);
 
     if (!response) {
       throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
@@ -125,6 +126,8 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     };
   } catch (error) {
     if (error instanceof ApiError) {
+      console.log('error', error);
+
       return {
         props: {
           error: error.message

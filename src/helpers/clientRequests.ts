@@ -22,6 +22,8 @@ const get = async <T>(url: string): Promise<T> => {
     return res.data;
   } catch (error) {
     if (error instanceof AxiosError) {
+      console.log('AxiosError', error);
+
       throw new ApiError(
         error.name,
         error?.response?.status || 400,
