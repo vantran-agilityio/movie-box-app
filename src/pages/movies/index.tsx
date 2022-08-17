@@ -32,6 +32,8 @@ import { ApiError } from '@common-types/error';
 
 // Layouts
 import Layout from './layout';
+import { MOVIE_URL } from '@constants/api';
+import axios, { AxiosResponse } from 'axios';
 
 interface MoviesProps {
   movieList?: Movie[];
@@ -115,6 +117,10 @@ export const getStaticProps: GetStaticProps = async (): Promise<
 > => {
   try {
     const response: MoviesResponse = await getMovies();
+    const res: AxiosResponse = await axios.get(MOVIE_URL);
+
+    console.log('res', res);
+
     console.log('response', response);
 
     if (!response) {
