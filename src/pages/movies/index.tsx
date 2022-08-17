@@ -116,8 +116,8 @@ export const getStaticProps: GetStaticProps = async (): Promise<
   GetStaticPropsResult<MoviesProps>
 > => {
   try {
-    const response: MoviesResponse = await getMovies();
     const res: AxiosResponse = await axios.get(MOVIE_URL);
+    const response: MoviesResponse = await getMovies();
 
     console.log('res', res);
 
