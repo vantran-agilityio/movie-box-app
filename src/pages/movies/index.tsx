@@ -32,8 +32,6 @@ import { ApiError } from '@common-types/error';
 
 // Layouts
 import Layout from './layout';
-import { MOVIE_URL } from '@constants/api';
-import axios, { AxiosError, AxiosResponse } from 'axios';
 
 interface MoviesProps {
   movieList?: Movie[];
@@ -116,12 +114,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
   GetStaticPropsResult<MoviesProps>
 > => {
   try {
-    const res: AxiosResponse = await axios.get(MOVIE_URL);
     const response: MoviesResponse = await getMovies();
-
-    console.log('res', res);
-
-    console.log('response', response);
 
     if (!response) {
       throw new Error(ERROR_MESSAGES.SERVER_RESPONSE_ERROR);
@@ -131,12 +124,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
       props: { movieList: response.movies }
     };
   } catch (error) {
-    if (error instanceof AxiosError) {
-      console.log('(error instanceof AxiosResponse', error);
-    }
     if (error instanceof ApiError) {
-      console.log('error', error);
-
       return {
         props: {
           error: error.message
